@@ -7,6 +7,6 @@ class GazeEvent:
     """
     x: float
     y: float
-    blink: bool
+    #blink: bool
     timestamp: float
-    confidence: float
+    #confidence: float

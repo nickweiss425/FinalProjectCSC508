@@ -1,25 +1,15 @@
-from eyetrax import GazeEstimator, run_9_point_calibration
-import cv2
+from blackboard import Blackboard
+from gaze_source import GazeSource
+#from gaze_interpreter import GazeInterpreter
 
-# Create estimator and calibrate
-estimator = GazeEstimator()
-run_9_point_calibration(estimator)
+def main():
+    blackboard = Blackboard.get_instance()
 
-# Save model
-estimator.save_model("gaze_model.pkl")
+    gaze_source = GazeSource(blackboard, poll_interval=0.03)
+    gaze_source.start()
 
-# Load model
-estimator = GazeEstimator()
-estimator.load_model("gaze_model.pkl")
+    while(True):
+        pass
 
-cap = cv2.VideoCapture(0)
-
-while True:
-    # Extract features from frame
-    ret, frame = cap.read()
-    features, blink = estimator.extract_features(frame)
-
-    # Predict screen coordinates
-    if features is not None and not blink:
-        x, y = estimator.predict([features])[0]
-        print(f"Gaze: ({x:.0f}, {y:.0f})")
+if __name__ == "__main__":
+    main()
