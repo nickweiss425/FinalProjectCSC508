@@ -109,7 +109,9 @@ class Blackboard:
         with self._data_lock:
             self._current_gaze = gaze
             snapshot = self._get_data_snapshot()
+            snapshot["changed"] = "current_gaze"
         self._notify_observers(snapshot)
+        
 
     def set_current_fixation(self, fixation: FixationEvent):
         """
@@ -119,6 +121,7 @@ class Blackboard:
         with self._data_lock:
             self._current_fixation = fixation
             snapshot = self._get_data_snapshot()
+            snapshot["changed"] = "current_fixation"
         self._notify_observers(snapshot)
 
     def set_current_command(self, command: RobotCommand):
@@ -129,6 +132,7 @@ class Blackboard:
         with self._data_lock:
             self._current_command = command
             snapshot = self._get_data_snapshot()
+            snapshot["changed"] = "current_command"
         self._notify_observers(snapshot)   
 
     # --------- getters (if needed by non-observer code) ---------
