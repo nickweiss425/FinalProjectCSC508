@@ -84,8 +84,10 @@ class GazeSource(threading.Thread):
         # predict screen coordinates
         if features is not None and not blink:
             x, y = self._estimator.predict([features])[0]
-            print(f"Gaze: ({x:.0f}, {y:.0f})")
-            ge = GazeEvent(x=x, y=y, timestamp=time.time())
+            norm_x = float(x) / 1000.0
+            norm_y = float(y) / 1000.0
+            #print(f"Gaze: ({x:.3f}, {y:.3f})")
+            ge = GazeEvent(x=norm_x, y=norm_y, timestamp=time.time())
             return ge
         return None
 

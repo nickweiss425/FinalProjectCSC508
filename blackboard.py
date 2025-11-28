@@ -122,6 +122,7 @@ class Blackboard:
             self._current_fixation = fixation
             snapshot = self._get_data_snapshot()
             snapshot["changed"] = "current_fixation"
+        print(snapshot)
         self._notify_observers(snapshot)
 
     def set_current_command(self, command: RobotCommand):

@@ -13,7 +13,7 @@ from blackboard import Blackboard, Observer
 # tracks updates to gaze events in blackboard and converts window into fixation event
 class GazeInterpreter(Observer):
 
-    def __init__(self, blackboard, window_duration=0.6, min_samples=5, std_threshold=0.05):
+    def __init__(self, blackboard: Blackboard, window_duration=0.6, min_samples=5, std_threshold=0.05):
         """
         initialize the gaze interpreter
 
@@ -54,7 +54,6 @@ class GazeInterpreter(Observer):
                     fixation = self._compute_fixation()
                     if (fixation is not None):
                         self._blackboard.set_current_fixation(fixation)
-                        print(fixation)
                         self._samples = []
 
     def _window_ready(self):
