@@ -17,7 +17,14 @@ def main():
     blackboard.add_observer(interpreter)
 
     gaze_source = GazeSource(blackboard, poll_interval=0.03)
+    gaze_source.calibrate()
     gaze_source.start()
+
+    def on_close():
+        gaze_source.stop()
+        display.root.destroy()
+
+    display.root.protocol("WM_DELETE_WINDOW", on_close)
 
     display.run()
 
