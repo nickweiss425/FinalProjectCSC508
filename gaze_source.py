@@ -45,6 +45,10 @@ class GazeSource(threading.Thread):
         """
         self._running = False
 
+    def calibrate(self):
+        self._estimator = GazeEstimator()
+        run_9_point_calibration(self._estimator)
+
     def run(self):
         """
         thread loop:
@@ -53,8 +57,6 @@ class GazeSource(threading.Thread):
         - push it to the Blackboard
         - sleep for poll_interval
         """
-        self._estimator = GazeEstimator()
-        run_9_point_calibration(self._estimator)
 
         # Save model
         self._estimator.save_model("gaze_model.pkl")
