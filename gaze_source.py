@@ -86,8 +86,8 @@ class GazeSource(threading.Thread):
         # predict screen coordinates
         if features is not None and not blink:
             x, y = self._estimator.predict([features])[0]
-            norm_x = float(x) / 1000.0
-            norm_y = float(y) / 1000.0
+            norm_x = float(x) / float(self._blackboard.get_screen_width())
+            norm_y = float(y) / float(self._blackboard.get_screen_height())
             #print(f"Gaze: ({x:.3f}, {y:.3f})")
             ge = GazeEvent(x=norm_x, y=norm_y, timestamp=time.time())
             return ge

@@ -3,6 +3,9 @@ from gaze_source import GazeSource
 from gaze_interpreter import GazeInterpreter
 from command_generator import CommandGenerator
 from gaze_display import GazeDisplay
+from screeninfo import get_monitors
+for m in get_monitors():
+    print(m.width, "x", m.height)
 
 def main():
     blackboard = Blackboard.get_instance()

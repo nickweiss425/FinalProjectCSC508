@@ -55,7 +55,7 @@ class CommandGenerator(Observer):
         negative_cross = -1 * x + 1
         
         if (x < 0.5 and y <= positive_cross) or (x >= 0.5 and y <= negative_cross):
-            return CommandType.BACKWARD
+            return CommandType.FORWARD
         
         if (x < 0.5 and y < negative_cross and y > positive_cross):
             return CommandType.ROTATE_LEFT
@@ -64,7 +64,7 @@ class CommandGenerator(Observer):
             return CommandType.ROTATE_RIGHT
         
         if (x < 0.5 and y >= negative_cross) or (x >= 0.5 and y >= positive_cross):
-            return CommandType.FORWARD
+            return CommandType.BACKWARD
         
         return None
 

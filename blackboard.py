@@ -4,6 +4,9 @@ import threading
 from gaze_event import GazeEvent
 from fixation_event import FixationEvent
 from robot_command import RobotCommand, CommandType
+from screeninfo import get_monitors
+
+
 
 # any class with an update(data) method is considered an Observer --> mirrors java implementation
 class Observer(Protocol):
@@ -49,9 +52,21 @@ class Blackboard:
         # holds the last issued command to the robot
         self._current_command: RobotCommand = None
 
+        
+        m = get_monitors()[0]
+        self._screen_width = m.width
+        self._screen_height = m.height
+
+
+
+
+
         self._observers: List[Observer] = []
         self._data_lock = threading.Lock()
         self._initialized = True
+
+
+
     
     @classmethod 
     def get_instance(cls):
@@ -148,3 +163,11 @@ class Blackboard:
     def get_current_command(self):
         with self._data_lock:
             return self._current_command
+        
+    def get_screen_width(self):
+        with self._data_lock:
+            return self._screen_width
+        
+    def get_screen_height(self):
+        with self._data_lock:
+            return self._screen_height
