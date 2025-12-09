@@ -27,7 +27,7 @@ class CommandGenerator(Observer):
                 new_command = RobotCommand(new_command_type, time.time())
                 last_command = self._blackboard.get_current_command()
 
-                if last_command is None or new_command.command != last_command.command:
+                if last_command is None or new_command != last_command:
                     self._blackboard.set_current_command(new_command)
                     print("NEW COMMAND: " + str(new_command.command))
     
@@ -48,8 +48,8 @@ class CommandGenerator(Observer):
         x = fixation.mean_x
         y = fixation.mean_y
 
-        if x <= 0.60 and x >= 0.40 and y <= 0.60 and y >=0.40:
-            return CommandType.STOP
+        # if x <= 0.60 and x >= 0.40 and y <= 0.60 and y >=0.40:
+        #     return CommandType.STOP
         
         positive_cross = x 
         negative_cross = -1 * x + 1
