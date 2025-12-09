@@ -26,7 +26,7 @@ class MqttCommandPublisher(Observer):
 
         self._client = mqtt.Client()
         self._client.connect(broker_host, broker_port, keepalive=60)
-        # Run MQTT network loop in background thread
+        # run MQTT network loop in background thread
         self._client.loop_start()
 
     def update(self, data: Dict[str, Any]) -> None:
@@ -41,10 +41,10 @@ class MqttCommandPublisher(Observer):
         if cmd is None:
             return
 
-        # Send the enum NAME, e.g. "FORWARD", "LEFT"
+        # Send the enum name: "FORWARD", "LEFT",, etc
         payload = cmd.command.name
 
-        # Fire-and-forget publish
+        # publish
         self._client.publish(self._topic, payload)
 
     def close(self) -> None:

@@ -73,7 +73,7 @@ class RobotGame:
     def _process_commands(self) -> None:
         """
         periodically called in Tk mainloop to apply any commands
-        received via MQTT.
+        received via MQTT
         """
         while not self._cmd_queue.empty():
             try:

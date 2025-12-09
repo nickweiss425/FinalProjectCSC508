@@ -1,20 +1,18 @@
-# gaze_display.py
 import tkinter as tk
 import queue
 from typing import Any, Dict
 
-from blackboard import Blackboard  # adjust import if needed
+from blackboard import Blackboard, Observer 
 
 
-class GazeDisplay:
+class GazeDisplay(Observer):
     """
     tkinter observer that displays:
       - the last gaze direction
       - the last robot command
     """
 
-    def __init__(self, blackboard: Blackboard):
-        self.blackboard = blackboard
+    def __init__(self):
 
         # queue for thread safe communication from Blackboard threads to Tk mainloop
         self._queue: "queue.Queue[Dict[str, Any]]" = queue.Queue()

@@ -9,7 +9,7 @@ from screeninfo import get_monitors
 def main():
     blackboard = Blackboard.get_instance()
 
-    display = GazeDisplay(blackboard)
+    display = GazeDisplay()
     blackboard.add_observer(display)
 
     generator = CommandGenerator(blackboard)

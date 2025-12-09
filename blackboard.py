@@ -57,10 +57,6 @@ class Blackboard:
         self._screen_width = m.width
         self._screen_height = m.height
 
-
-
-
-
         self._observers: List[Observer] = []
         self._data_lock = threading.Lock()
         self._initialized = True
