@@ -7,8 +7,8 @@ class CommandType(Enum):
     """high-level commands for the robot"""
     FORWARD = "forward"
     BACKWARD = "backward"
-    ROTATE_LEFT = "rotate_left"
-    ROTATE_RIGHT = "rotate_right"
+    LEFT = "left"
+    RIGHT = "right"
     STOP = "stop"
 
 

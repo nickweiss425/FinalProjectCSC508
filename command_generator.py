@@ -38,8 +38,8 @@ class CommandGenerator(Observer):
         - diagonals y = x and y = -x + 1 to split into 4 wedges:
           top wedge    --> FORWARD
           bottom wedge --> BACKWARD
-          left wedge   --> ROTATE_LEFT
-          right wedge  --> ROTATE_RIGHT
+          left wedge   --> LEFT
+          right wedge  --> RIGHT
         """
 
         if not fixation.is_valid:
@@ -58,10 +58,10 @@ class CommandGenerator(Observer):
             return CommandType.FORWARD
         
         if (x < 0.5 and y < negative_cross and y > positive_cross):
-            return CommandType.ROTATE_LEFT
+            return CommandType.LEFT
         
         if (x > 0.5 and y < positive_cross and y > negative_cross):
-            return CommandType.ROTATE_RIGHT
+            return CommandType.RIGHT
         
         if (x < 0.5 and y >= negative_cross) or (x >= 0.5 and y >= positive_cross):
             return CommandType.BACKWARD

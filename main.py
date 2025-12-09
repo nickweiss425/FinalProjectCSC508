@@ -2,10 +2,9 @@ from blackboard import Blackboard
 from gaze_source import GazeSource
 from gaze_interpreter import GazeInterpreter
 from command_generator import CommandGenerator
+from command_publisher import MqttCommandPublisher
 from gaze_display import GazeDisplay
 from screeninfo import get_monitors
-for m in get_monitors():
-    print(m.width, "x", m.height)
 
 def main():
     blackboard = Blackboard.get_instance()
@@ -18,6 +17,9 @@ def main():
 
     interpreter = GazeInterpreter(blackboard, window_duration=1.5, min_samples=5, std_threshold=0.06)
     blackboard.add_observer(interpreter)
+
+    mqtt_publisher = MqttCommandPublisher(blackboard)
+    blackboard.add_observer(mqtt_publisher)
 
     gaze_source = GazeSource(blackboard, poll_interval=0.03)
     gaze_source.calibrate()
