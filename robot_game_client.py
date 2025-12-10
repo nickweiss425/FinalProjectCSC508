@@ -1,5 +1,3 @@
-# robot_game_client.py
-
 import random
 import queue
 from dataclasses import dataclass

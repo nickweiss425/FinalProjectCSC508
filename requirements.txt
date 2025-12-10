@@ -1,2 +1,4 @@
-eyetrax
 paho-mqtt
+screeninfo
+eyetrax
+opencv-python
