@@ -1,5 +1,5 @@
 # Eye-Controlled Robot Command System
-Names: Charles Moreno and Nick Weiss
+Names: Charles Moreno and Nick Weiss  
 This project uses a python eye tracking library to generate high-level robot commands, publishes them over MQTT, and visualizes both gaze and commands in a GUI. An optional MQTT “robot game” shows a dot moving on a grid in response to the commands.
 
 
