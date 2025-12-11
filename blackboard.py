@@ -1,4 +1,3 @@
-# Protocol lets us express an interface without enforcing inheritence
 from typing import Any, Dict, List, Protocol
 import threading
 from gaze_event import GazeEvent
@@ -91,7 +90,6 @@ class Blackboard:
     def _notify_observers(self, snapshot: Dict[str, Any]):
         """
         notify all observers with the given snapshot
-        Copies the observer list under lock to avoid concurrent modification issues.
         """
         with self._data_lock:
             observers_copy = list(self._observers)  # shallow copy
