@@ -70,7 +70,7 @@ Connects to the public MQTT broker test.mosquitto.org:1883
 Listens for robot commands (FORWARD, BACKWARD, LEFT, RIGHT, STOP)
 
 
-Moves a dot around a 10×10 grid
+Moves a dot around a grid
 
 
 Lets you “capture” an orange token to increase score
