@@ -168,7 +168,7 @@ class RobotGame:
             tags="robot",
         )
 
-        # Update score label
+        # update score label
         self._status_label.config(text=f"Score: {self._state.score}")
 
 

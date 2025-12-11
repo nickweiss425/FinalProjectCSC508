@@ -10,8 +10,8 @@ from robot_command import RobotCommand
 
 class MqttCommandPublisher(Observer):
     """
-    Observes Blackboard.current_command and publishes the command name
-    to an MQTT topic, e.g. "gaze_bot/command".
+    observes Blackboard.current_command and publishes the command name
+    to an MQTT topic
     """
 
     def __init__(
@@ -31,8 +31,8 @@ class MqttCommandPublisher(Observer):
 
     def update(self, data: Dict[str, Any]) -> None:
         """
-        Called by Blackboard whenever its state changes.
-        We only care when "current_command" is updated.
+        called by Blackboard whenever its state changes
+        we only care when "current_command" is updated
         """
         if data.get("changed") != "current_command":
             return
@@ -48,6 +48,6 @@ class MqttCommandPublisher(Observer):
         self._client.publish(self._topic, payload)
 
     def close(self) -> None:
-        """Cleanly stop the MQTT loop and disconnect."""
+        """cleanly stop the MQTT loop and disconnect."""
         self._client.loop_stop()
         self._client.disconnect()

@@ -8,8 +8,6 @@ from blackboard import Blackboard
 from eyetrax import GazeEstimator, run_9_point_calibration
 import cv2
 
-# runs on own thread and talks to eyetrax library 
-# publishes eye tracking data to blackboard
 class GazeSource(threading.Thread):
     """
     runs on own thread that continuously reads gaze data from  gaze library

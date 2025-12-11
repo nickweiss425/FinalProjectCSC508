@@ -34,7 +34,6 @@ class CommandGenerator(Observer):
     def _fixation_to_command(self, fixation: FixationEvent):
         """
         Convert a FixationEvent into one of the five CommandTypes using:
-        - a central STOP square
         - diagonals y = x and y = -x + 1 to split into 4 wedges:
           top wedge    --> FORWARD
           bottom wedge --> BACKWARD
@@ -48,8 +47,6 @@ class CommandGenerator(Observer):
         x = fixation.mean_x
         y = fixation.mean_y
 
-        # if x <= 0.60 and x >= 0.40 and y <= 0.60 and y >=0.40:
-        #     return CommandType.STOP
         
         positive_cross = x 
         negative_cross = -1 * x + 1
